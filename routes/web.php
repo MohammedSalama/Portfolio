@@ -26,7 +26,16 @@ Route::get('/', function () {
  */
 Route::get('/', function () {
     return view('Frontend.master');
-})->middleware(['auth', 'verified'])->name('Portfolio');
+})->name('Portfolio');
+
+/**
+ * Backend Theme
+ */
+Route::get('/admin-dashboard', function () {
+    return view('Backend.admin-dashboard');
+})->middleware(['auth', 'verified'])->name('AdminDashboard');
+
+
 
 
 //Route::middleware('auth')->group(function () {
