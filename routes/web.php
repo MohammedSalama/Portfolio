@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ProfileController;
+use App\Models\About;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,8 +27,15 @@ Route::get('/', function () {
  * Frontend Theme
  */
 Route::get('/', function () {
-    return view('Frontend.master');
+    $about = About::first();
+    return view('Frontend.master',compact('about'));
 })->name('Portfolio');
+
+/**
+ * Route About
+ */
+Route::get('about',[AboutController::class,'index'])->name('about.index');
+Route::post('about/{id}',[AboutController::class,'update'])->name('about.update');
 
 /**
  * Backend Theme
